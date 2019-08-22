@@ -14,9 +14,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--此文件路径是jenkins的路径，如果不用jenkins，则不能这样写，需要写项目的build路径，如： -->
+        <!--  <jmeter.result.jtl.dir>${env.WORKSPACE}/Report/${env.BUILD_ID}/jtl</jmeter.result.jtl.dir>
+        <jmeter.result.html.dir>${env.WORKSPACE}/Report/${env.BUILD_ID}/html</jmeter.result.html.dir>-->
+
         <jmeter.result.jtl.dir>${project.build.directory}\jmeter\results</jmeter.result.jtl.dir>
         <jmeter.result.html.dir>${project.build.directory}\jmeter\html</jmeter.result.html.dir>
-        <jmeter.result.html.dir1>${project.build.directory}\jmeter\html1</jmeter.result.html.dir1>
         <ReportName>TestReport</ReportName>
     </properties>
 
@@ -35,16 +38,46 @@
         <plugin>
             <groupId>com.lazerycode.jmeter</groupId>
             <artifactId>jmeter-maven-plugin</artifactId>
-            <version>2.5.0</version>
+            <version>2.9.0</version>
+
             <configuration>
+
+                <jmeterExtensions>
+                    <!-- 增加jar包,需要先将jar注册到本地maven仓库，打开cmd使用如下命令-->
+                    <!--mvn install:install-file -Dfile=C:\Users\英树\Desktop\刘凤玲的文件\apache-jmeter-5.1.1\
+                    lib\ext\jmeter-plugins-json-2.7.jar -DgroupId=com.jmeter.chajian -DartifactId=
+                    jmeter-plugins-json -Dversion=2.7 -Dpackaging=jar -->
+                    <artifact>com.jmeter.chajian:jmeter-plugins-json:2.7</artifact>
+
+                    <!-- 本地自己写的jar  <artifact>com.smrz:smrz-utils:1.0</artifact>-->
+                </jmeterExtensions>
+
+                <!-- 设置jmeter生成结果文件格式-->
                 <resultsFileFormat>xml</resultsFileFormat>
+
+                <!-- 设置忽略失败是否停止运行-->
                 <ignoreResultFailures>true</ignoreResultFailures>
-                <testResultsTimestamp>true</testResultsTimestamp>
+
+                <!--设置结果是否有时间戳-->
+                <testResultsTimestamp>false</testResultsTimestamp>
+
+                <testFilesIncluded>
+                    <!-- //指定运行的jmeter脚本 -->
+                    <jMeterTestFile>Test.jmx</jMeterTestFile>
+                </testFilesIncluded>
+                <!-- 指定jmx运行目录
+                       <testFilesDirectory>C:\Users\英树\Desktop\刘凤玲的文件\jmeter\src\test\jmeter\testcase</testFilesDirectory>
+                       -->
+                <!-- 指定jtl生成目录 -->
+                <resultsDirectory>${jmeter.result.jtl.dir}</resultsDirectory>
+
             </configuration>
             <executions>
                 <execution>
                     <id>jmeter-tests</id>
                     <phase>verify</phase>
+
+                    <!--脚本所在的文件夹 -->
                     <goals>
                         <goal>jmeter</goal>
                     </goals>
@@ -54,11 +87,11 @@
 
 
         <plugin>
+            <!--根据xsl模版把jtl文件转换成html，官网地址： http://www.mojohaus.org/xml-maven-plugin/examples/transform-saxon.html-->
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>xml-maven-plugin</artifactId>
-
+            <version>1.0-beta-3</version>
             <executions>
-
                 <execution>
                     <phase>verify</phase>
                     <goals>
