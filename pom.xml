@@ -44,14 +44,14 @@
         <plugin>
             <groupId>com.lazerycode.jmeter</groupId>
             <artifactId>jmeter-maven-plugin</artifactId>
-            <version>2.5.0</version>
+            <version>2.9.0</version>
 
             <configuration>
 
                 <jmeterExtensions>
                     <!-- 增加jar包,需要先将jar注册到本地maven仓库，打开cmd使用如下命令-->
-                    <!--mvn install:install-file -Dfile=C:\Users\英树\Desktop\刘凤玲的文件\apache-jmeter-5.1.1\
-                    lib\ext\jmeter-plugins-json-2.6.jar -DgroupId=com.jmeter.chajian -DartifactId=
+                    <!--mvn install:install-file -Dfile=C:\Users\英树\.m2\repository\com\jmeter\chajian\
+                    jmeter-plugins-json\2.6\jmeter-plugins-json-2.6.jar -DgroupId=kg.acp -DartifactId=
                     jmeter-plugins-json -Dversion=2.6 -Dpackaging=jar -->
                 <artifact>com.jmeter.chajian:jmeter-plugins-json:2.6</artifact>
 
