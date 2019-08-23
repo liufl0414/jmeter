@@ -48,17 +48,17 @@
 
             <configuration>
 
-                <jmeterExtensions>
+                <!--<jmeterExtensions>-->
                     <!-- 增加jar包,需要先将jar注册到本地maven仓库，打开cmd使用如下命令-->
                     <!--mvn install:install-file -Dfile=C:\Users\英树\Desktop\刘凤玲的文件\apache-jmeter-5.1.1\
                     lib\ext\jmeter-plugins-json-2.7.jar -DgroupId=com.jmeter.chajian -DartifactId=
                     jmeter-plugins-json -Dversion=2.7 -Dpackaging=jar -->
-                    <artifact>com.jmeter.chajian:jmeter-plugins-json:2.7</artifact>
+                <!--<artifact>com.jmeter.chajian:jmeter-plugins-json:2.7</artifact>-->
 
-                    <!-- 本地自己写的jar  <artifact>com.smrz:smrz-utils:1.0</artifact>-->
-                </jmeterExtensions>
+               <!-- 本地自己写的jar  <artifact>com.smrz:smrz-utils:1.0</artifact>-->
+                <!--</jmeterExtensions>-->
 
-                <!-- 设置jmeter生成结果文件格式-->
+               <!-- 设置jmeter生成结果文件格式-->
                 <resultsFileFormat>xml</resultsFileFormat>
 
                 <!-- 设置忽略失败是否停止运行-->
