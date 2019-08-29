@@ -53,7 +53,7 @@
                     <!--mvn install:install-file -Dfile=C:\Users\英树\.m2\repository\com\jmeter\chajian\
                     jmeter-plugins-json\2.6\jmeter-plugins-json-2.6.jar -DgroupId=kg.acp -DartifactId=
                     jmeter-plugins-json -Dversion=2.6 -Dpackaging=jar -->
-                <artifact>kg.acp:jmeter-plugins-json:2.6</artifact>
+                <artifact>com.jmeter.chajian:jmeter-plugins-json:2.6</artifact>
 
                <!-- 本地自己写的jar  <artifact>com.smrz:smrz-utils:1.0</artifact>-->
               </jmeterExtensions>
