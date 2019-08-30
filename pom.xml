@@ -99,7 +99,7 @@
             <version>1.0-beta-3</version>
             <executions>
                 <execution>
-                    <phase>verify</phase>
+                    <phase>install</phase>
                     <goals>
                         <goal>transform</goal>
                     </goals>
@@ -109,7 +109,7 @@
                 <transformationSets>
                     <transformationSet>
                         <dir>${jmeter.result.jtl.dir}</dir>
-                        <stylesheet>resources\jmeter-results-report_21.xsl</stylesheet>
+                        <stylesheet>src\test\resources\jmeter-results-report_21.xsl</stylesheet>
                         <outputDir>${jmeter.result.html.dir}</outputDir>
                         <fileMappers>
                             <fileMapper
